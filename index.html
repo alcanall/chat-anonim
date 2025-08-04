@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hadiah Spesial Untuk Kamu!</title>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            transition: all 0.5s;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            max-width: 500px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #6a11cb;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 30px;
+        }
+
+        p.animated-text {
+            color: #444;
+            font-size: 1.2rem;
+            font-weight: 500;
+            animation: textShake 3s infinite;
+        }
+
+        @keyframes textShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-3px); }
+            75% { transform: translateX(3px); }
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .gift-box {
+            width: 220px;
+            height: 220px;
+            background: linear-gradient(45deg, #ff512f 0%, #dd2476 50%, #ff512f 100%);
+            background-size: 200% 200%;
+            animation: gradient 4s ease infinite;
+            margin: 0 auto;
+            border-radius: 20px;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .gift-box:hover {
+            transform: scale(1.1) rotateY(20deg) rotateX(5deg);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .gift-box {
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        .gift-box::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.3);
+            top: -40px;
+            left: 0;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        .gift-box:hover::before {
+            animation: shine 2s infinite;
+        }
+
+        @keyframes shine {
+            0% { top: -40px; }
+            100% { top: 200px; }
+        }
+
+        .ribbon {
+            width: 100%;
+            height: 20px;
+            background-color: #ff0066;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .ribbon::before, .ribbon::after {
+            content: "";
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-color: #ff0066;
+            border-radius: 50%;
+            top: -20px;
+        }
+
+        .ribbon::before {
+            left: -30px;
+        }
+
+        .ribbon::after {
+            right: -30px;
+        }
+
+        .gift-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            position: relative;
+            z-index: 5;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .hack-effect {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 1000;
+            color: lime;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+            overflow: auto;
+        }
+
+        .matrix-code {
+            position: absolute;
+            font-size: 16px;
+            color: lime;
+            opacity: 0.7;
+        }
+
+        #video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1001;
+            display: none;
+        }
+
+        #video-hack {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .claim-prize {
+            display: none;
+            background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .claim-prize::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .claim-prize:hover::before {
+            left: 100%;
+        }
+
+        .claim-prize:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Berikan pertanyaan anonim untuk seseorang</h1>
+        <p class="animated-text">Kirim pesan dengan mengclick kirim pesan di bawah!</p>
+        
+        <div class="gift-box" id="giftBox">
+            <div class="ribbon"></div>
+            <div class="gift-text">KIRIM PESAN</div>
+        </div>
+        
+        <button class="claim-prize" id="claimPrize">KLIK DI SINI UNTUK MENGIRIM PESAN</button>
+    </div>
+
+    <div class="hack-effect" id="hackEffect">
+        <h2>SYSTEM ALERT:</h2>
+        <p id="hackText"></p>
+        <div class="matrix-code" id="matrix1"></div>
+        <div class="matrix-code" id="matrix2"></div>
+        <div class="matrix-code" id="matrix3"></div>
+        <div class="matrix-code" id="matrix4"></div>
+        <div class="matrix-code" id="matrix5"></div>
+    </div>
+
+    <div id="video-container">
+        <video id="video-hack" autoplay loop></video>
+    </div>
+
+    <audio id="hackSound" preload="auto">
+        <source src="https://i.top4top.io/m_3503km6bs1.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const giftBox = document.getElementById('giftBox');
+        const hackEffect = document.getElementById('hackEffect');
+        const hackText = document.getElementById('hackText');
+        const videoContainer = document.getElementById('video-container');
+        const videoHack = document.getElementById('video-hack');
+        const hackSound = document.getElementById('hackSound');
+        const claimPrize = document.getElementById('claimPrize');
+        const matrixCodes = ['matrix1', 'matrix2', 'matrix3', 'matrix4', 'matrix5'];
+
+        // Setup matrix code rain
+        function setupMatrix() {
+            matrixCodes.forEach(id => {
+                const element = document.getElementById(id);
+                element.style.left = Math.random() * 100 + '%';
+                element.style.top = Math.random() * 100 + '%';
+                
+                let text = '';
+                const lines = Math.floor(Math.random() * 10) + 5;
+                for (let i = 0; i < lines; i++) {
+                    text += generateRandomBinary() + '<br>';
+                }
+                element.innerHTML = text;
+            });
+        }
+
+        function generateRandomBinary() {
+            let binary = '';
+            const length = Math.floor(Math.random() * 30) + 10;
+            for (let i = 0; i < length; i++) {
+                binary += Math.round(Math.random()) + ' ';
+            }
+            return binary;
+        }
+
+        function animateMatrix() {
+            matrixCodes.forEach(id => {
+                const element = document.getElementById(id);
+                element.style.top = (parseFloat(element.style.top) + 0.5) + '%';
+                
+                if (parseFloat(element.style.top) > 100) {
+                    element.style.top = '-20%';
+                    element.innerHTML = generateRandomBinary() + '<br>' + generateRandomBinary();
+                }
+            });
+        }
+
+        // Hack text animation
+        const hackMessages = [
+            "SYSTEM BREACH DETECTED!",
+            "UNAUTHORIZED ACCESS!",
+            "INITIATING COUNTERMEASURES...",
+            "VIRUS DETECTED: TROJAN.HACK.EXE",
+            "OVERRIDING SECURITY PROTOCOLS...",
+            "DISABLING FIREWALL...",
+            "EXTRACTING SENSITIVE DATA...",
+            "ACCESSING CAMERA FEED...",
+            "ACTIVATING BACKDOOR...",
+            "SYSTEM COMPROMISED!"
+        ];
+
+        function displayHackText() {
+            let i = 0;
+            hackText.innerHTML = '';
+            
+            function typeWriter() {
+                if (i < hackMessages.length) {
+                    hackText.innerHTML += hackMessages[i] + '<br><br>';
+                    i++;
+                    setTimeout(typeWriter, Math.random() * 1000 + 500);
+                }
+            }
+            
+            typeWriter();
+        }
+
+        // Gift box click handler
+        giftBox.addEventListener('click', function() {
+            // Play hack sound
+            hackSound.play();
+            
+            // Show hack effect
+            document.body.style.backgroundColor = 'black';
+            document.querySelector('.container').style.display = 'none';
+            hackEffect.style.display = 'block';
+            setupMatrix();
+            displayHackText();
+            
+            // Start matrix animation
+            const matrixInterval = setInterval(animateMatrix, 50);
+            
+            // Stop animations after 8 seconds
+            setTimeout(() => {
+                clearInterval(matrixInterval);
+            }, 100000);
+        });
+
+        // Claim prize button
+        claimPrize.addEventListener('click', function() {
+            alert("Hahaha! Kamu kena prank! 🤣🌟 Semoga harimu menyenangkan!");
+            location.reload();
+        });
+    </script>
+</body>
+</html>
