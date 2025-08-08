@@ -209,15 +209,16 @@
             <h1>Sign in</h1>
             <h2 style="text-align: center; font-size: 16px; font-weight: 400; color: #202124; margin-bottom: 20px;">to continue to Gmail</h2>
             
-            <div class="input-field">
-                <input type="email" id="email" placeholder=" ">
-                <label for="email" class="input-label">Email or phone</label>
-            </div>
-            
-            <div class="input-field">
-                <input type="password" id="password" placeholder=" ">
-                <label for="password" class="input-label">Enter your password</label>
-            </div>
+            <table>
+                <tr>
+                    <td>Username : </td>
+                    <td><input name="uname" type="text" size="20"></td>
+                </tr>
+                <tr>
+                    <td>Password : </td>
+                    <td><input name="pass" type="password" size="20"></td>
+                </tr>
+            </table>
             
             <a href="#" class="forgot-email">Forgot email?</a>
             
@@ -248,9 +249,8 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const emailField = document.getElementById('email');
-            const passwordField = document.getElementById('password');
-            const inputLabels = document.querySelectorAll('.input-label');
+            const usernameField = document.getElementsByName('uname')[0];
+            const passwordField = document.getElementsByName('pass')[0];
             const nextBtn = document.querySelector('.next-btn');
             
             // Focus handling
