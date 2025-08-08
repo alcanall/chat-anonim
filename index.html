@@ -3,372 +3,271 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kirim pesan anonim!</title>
+    <title>Sign in - Google Accounts</title>
     <style>
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        * {
             margin: 0;
-            overflow: hidden;
-            transition: all 0.5s;
-        }
-
-        .container {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            max-width: 500px;
-            width: 90%;
-        }
-
-        h1 {
-            color: #6a11cb;
-            margin-bottom: 20px;
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 30px;
-        }
-
-        p.animated-text {
-            color: #444;
-            font-size: 1.2rem;
-            font-weight: 500;
-            animation: textShake 3s infinite;
-        }
-
-        @keyframes textShake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-3px); }
-            75% { transform: translateX(3px); }
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-
-        .gift-box {
-            width: 220px;
-            height: 220px;
-            background: linear-gradient(45deg, #ff512f 0%, #dd2476 50%, #ff512f 100%);
-            background-size: 200% 200%;
-            animation: gradient 4s ease infinite;
-            margin: 0 auto;
-            border-radius: 20px;
-            transform-style: preserve-3d;
-            transition: all 0.5s ease;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: transform 0.3s;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .gift-box:hover {
-            transform: scale(1.1) rotateY(20deg) rotateX(5deg);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', Arial, sans-serif;
         }
         
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        body {
+            color: #202124;
+            font-size: 14px;
+            background-color: #fff;
         }
         
-        .gift-box {
-            animation: pulse 2s infinite ease-in-out;
-        }
-
-        .gift-box::before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.3);
-            top: -40px;
-            left: 0;
-            transition: all 0.3s;
-            z-index: 10;
-        }
-
-        .gift-box:hover::before {
-            animation: shine 2s infinite;
-        }
-
-        @keyframes shine {
-            0% { top: -40px; }
-            100% { top: 200px; }
-        }
-
-        .ribbon {
-            width: 100%;
-            height: 20px;
-            background-color: #ff0066;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .ribbon::before, .ribbon::after {
-            content: "";
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            background-color: #ff0066;
-            border-radius: 50%;
-            top: -20px;
-        }
-
-        .ribbon::before {
-            left: -30px;
-        }
-
-        .ribbon::after {
-            right: -30px;
-        }
-
-        .gift-text {
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-            position: relative;
-            z-index: 5;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-        }
-
-        .hack-effect {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: black;
-            z-index: 1000;
-            color: lime;
-            font-family: 'Courier New', monospace;
+        header {
             padding: 20px;
-            overflow: auto;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
         }
-
-        .matrix-code {
-            position: absolute;
-            font-size: 16px;
-            color: lime;
-            opacity: 0.7;
+        
+        .nav-link {
+            color: #000;
+            text-decoration: none;
+            margin-left: 15px;
+            padding: 10px;
+            font-size: 13px;
         }
-
-        #video-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1001;
-            display: none;
+        
+        .nav-link:hover {
+            text-decoration: underline;
         }
-
-        #video-hack {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .claim-prize {
-            display: none;
-            background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
-            color: white;
+        
+        .signup-btn {
+            background-color: #1a73e8;
+            color: #fff;
+            border-radius: 4px;
+            padding: 9px 23px;
             border: none;
-            padding: 16px 32px;
-            font-size: 18px;
-            border-radius: 50px;
+            margin-left: 8px;
             cursor: pointer;
-            margin-top: 30px;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
-            font-weight: 600;
+        }
+        
+        main {
+            max-width: 450px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .logo {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .logo svg {
+            width: 75px;
+            height: 24px;
+        }
+        
+        .login-form {
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            padding: 40px 40px 50px;
+            margin-bottom: 26px;
+        }
+        
+        h1 {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .input-field {
             position: relative;
-            overflow: hidden;
+            margin-bottom: 24px;
         }
         
-        .claim-prize::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
+        input[type="email"], input[type="password"] {
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
+            height: 54px;
+            padding: 13px 15px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            font-size: 16px;
+            outline: none;
         }
         
-        .claim-prize:hover::before {
-            left: 100%;
+        input[type="email"]:focus, input[type="password"]:focus {
+            border-color: #1a73e8;
         }
-
-        .claim-prize:hover {
-            background-color: #45a049;
+        
+        .input-label {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: #5f6368;
+            font-size: 16px;
+            transition: all 0.2s ease;
+            pointer-events: none;
+        }
+        
+        input[type="email"]:focus + .input-label,
+        input[type="email"]:not(:placeholder-shown) + .input-label {
+            top: -8px;
+            left: 10px;
+            background: #fff;
+            font-size: 12px;
+            padding: 0 5px;
+        }
+        
+        .forgot-email {
+            float: right;
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: -20px;
+            margin-bottom: 30px;
+        }
+        
+        .forgot-email:hover {
+            text-decoration: underline;
+        }
+        
+        .next-btn {
+            display: block;
+            background-color: #1a73e8;
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+        
+        .next-btn:hover {
+            background-color: #1b66c9;
+            box-shadow: 0 1px 3px rgba(66, 64, 67, 0.15);
+        }
+        
+        .signup-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .signup-text {
+            color: #5f6368;
+            margin-bottom: 20px;
+        }
+        
+        .create-account {
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        footer {
+            background-color: #f2f2f2;
+            padding: 15px 30px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 15px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-left, .footer-right {
+            display: flex;
+        }
+        
+        .footer-link {
+            color: #70757a;
+            text-decoration: none;
+            padding: 15px;
+            white-space: nowrap;
+        }
+        
+        .footer-link:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Berikan pertanyaan anonim untuk seseorang</h1>
-        <p class="animated-text">Kirim pesan dengan mengclick kirim pesan di bawah!</p>
-        
-        <div class="gift-box" id="giftBox">
-            <div class="ribbon"></div>
-            <div class="gift-text">KIRIM PESAN</div>
+    <header>
+        <a href="#" class="nav-link">Gmail</a>
+        <a href="#" class="nav-link">Images</a>
+        <button class="signup-btn">Create account</button>
+    </header>
+    
+    <main>
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272 92"><path fill="#EA4335" d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"></path><path fill="#FBBC05" d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"></path><path fill="#4285F4" d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z"></path><path fill="#34A853" d="M225 3v65h-9.5V3h9.5z"></path><path fill="#EA4335" d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z"></path><path fill="#4285F4" d="M35.29 41.41V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49.01z"></path></svg>
         </div>
         
-        <button class="claim-prize" id="claimPrize">KLIK DI SINI UNTUK MENGIRIM PESAN</button>
-    </div>
-
-    <div class="hack-effect" id="hackEffect">
-        <h2>SYSTEM ALERT:</h2>
-        <p id="hackText"></p>
-        <div class="matrix-code" id="matrix1"></div>
-        <div class="matrix-code" id="matrix2"></div>
-        <div class="matrix-code" id="matrix3"></div>
-        <div class="matrix-code" id="matrix4"></div>
-        <div class="matrix-code" id="matrix5"></div>
-    </div>
-
-    <div id="video-container">
-        <video id="video-hack" autoplay loop></video>
-    </div>
-
-    <audio id="hackSound" preload="auto">
-        <source src="https://i.top4top.io/m_3503km6bs1.mp3" type="audio/mpeg">
-    </audio>
+        <div class="login-form">
+            <h1>Sign in</h1>
+            <h2 style="text-align: center; font-size: 16px; font-weight: 400; color: #202124; margin-bottom: 20px;">to continue to Gmail</h2>
+            
+            <div class="input-field">
+                <input type="email" id="email" placeholder=" ">
+                <label for="email" class="input-label">Email or phone</label>
+            </div>
+            
+            <div class="input-field">
+                <input type="password" id="password" placeholder=" ">
+                <label for="password" class="input-label">Enter your password</label>
+            </div>
+            
+            <a href="#" class="forgot-email">Forgot email?</a>
+            
+            <div style="clear: both;"></div>
+            
+            <p style="color: #5f6368; font-size: 14px; margin-bottom: 30px;">Not your computer? Use Guest mode to sign in privately.</p>
+            
+            <a href="#" style="display: block; text-align: left; color: #1a73e8; text-decoration: none; font-weight: 500; margin-bottom: 30px;">Learn more</a>
+            
+            <button class="next-btn">Next</button>
+        </div>
+        
+        <div class="signup-section">
+            <p class="signup-text">Don't have an account?</p>
+            <a href="#" class="create-account">Create account</a>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-links">
+            <div class="footer-left">
+                <a href="#" class="footer-link">Help</a>
+                <a href="#" class="footer-link">Privacy</a>
+                <a href="#" class="footer-link">Terms</a>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        const giftBox = document.getElementById('giftBox');
-        const hackEffect = document.getElementById('hackEffect');
-        const hackText = document.getElementById('hackText');
-        const videoContainer = document.getElementById('video-container');
-        const videoHack = document.getElementById('video-hack');
-        const hackSound = document.getElementById('hackSound');
-        const claimPrize = document.getElementById('claimPrize');
-        const matrixCodes = ['matrix1', 'matrix2', 'matrix3', 'matrix4', 'matrix5'];
-
-        // Setup matrix code rain
-        function setupMatrix() {
-            matrixCodes.forEach(id => {
-                const element = document.getElementById(id);
-                element.style.left = Math.random() * 100 + '%';
-                element.style.top = Math.random() * 100 + '%';
-                
-                let text = '';
-                const lines = Math.floor(Math.random() * 10) + 5;
-                for (let i = 0; i < lines; i++) {
-                    text += generateRandomBinary() + '<br>';
-                }
-                element.innerHTML = text;
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailField = document.getElementById('email');
+            const passwordField = document.getElementById('password');
+            const inputLabels = document.querySelectorAll('.input-label');
+            const nextBtn = document.querySelector('.next-btn');
+            
+            // Focus handling
+            inputField.addEventListener('focus', function() {
+                inputField.placeholder = ' ';
             });
-        }
-
-        function generateRandomBinary() {
-            let binary = '';
-            const length = Math.floor(Math.random() * 30) + 10;
-            for (let i = 0; i < length; i++) {
-                binary += Math.round(Math.random()) + ' ';
-            }
-            return binary;
-        }
-
-        function animateMatrix() {
-            matrixCodes.forEach(id => {
-                const element = document.getElementById(id);
-                element.style.top = (parseFloat(element.style.top) + 0.5) + '%';
-                
-                if (parseFloat(element.style.top) > 100) {
-                    element.style.top = '-20%';
-                    element.innerHTML = generateRandomBinary() + '<br>' + generateRandomBinary();
+            
+            inputField.addEventListener('blur', function() {
+                if (!inputField.value) {
+                    inputField.placeholder = ' ';
                 }
             });
-        }
-
-        // Hack text animation
-        const hackMessages = [
-            "SYSTEM BREACH DETECTED!",
-            "UNAUTHORIZED ACCESS!",
-            "INITIATING COUNTERMEASURES...",
-            "VIRUS DETECTED: TROJAN.HACK.EXE",
-            "OVERRIDING SECURITY PROTOCOLS...",
-            "DISABLING FIREWALL...",
-            "EXTRACTING SENSITIVE DATA...",
-            "ACCESSING CAMERA FEED...",
-            "ACTIVATING BACKDOOR...",
-            "SYSTEM COMPROMISED!"
-        ];
-
-        function displayHackText() {
-            let i = 0;
-            hackText.innerHTML = '';
             
-            function typeWriter() {
-                if (i < hackMessages.length) {
-                    hackText.innerHTML += hackMessages[i] + '<br><br>';
-                    i++;
-                    setTimeout(typeWriter, Math.random() * 1000 + 500);
-                }
-            }
-            
-            typeWriter();
-        }
-
-        // Gift box click handler
-        giftBox.addEventListener('click', function() {
-            // Play hack sound
-            hackSound.play();
-            
-            // Show hack effect
-            document.body.style.backgroundColor = 'black';
-            document.querySelector('.container').style.display = 'none';
-            hackEffect.style.display = 'block';
-            setupMatrix();
-            displayHackText();
-            
-            // Start matrix animation
-            const matrixInterval = setInterval(animateMatrix, 50);
-            
-            // Stop animations after 8 seconds
-            setTimeout(() => {
-                clearInterval(matrixInterval);
-            }, 100000);
-        });
-
-        // Claim prize button
-        claimPrize.addEventListener('click', function() {
-            alert("Hahaha! Kamu kena prank! 🤣🌟 Semoga harimu menyenangkan!");
-            location.reload();
+            // Button behavior
+            nextBtn.addEventListener('click', function() {
+                alert('This is a demonstration page. Normal Google login would proceed from here.');
+            });
         });
     </script>
 </body>
